@@ -1,0 +1,1 @@
+export const noHeaderFooterUrls = ['/create-account', '/login', '/recover-password']
