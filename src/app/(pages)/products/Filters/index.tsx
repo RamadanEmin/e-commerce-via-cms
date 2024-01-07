@@ -1,15 +1,16 @@
 'use client'
 
 import React from 'react'
-
+import { useFilter } from '../../../_providers/Filter'
 import { Category } from '../../../../payload/payload-types'
 import { Checkbox } from '../../../_components/Checkbox'
-import { useFilter } from '../../../_providers/Filter'
+import { RadioButton } from '../../../_components/RadioButton'
+import { HR } from '../../../_components/HR'
 
 import classes from './index.module.scss'
 
 const Filters = ({ categories }: { categories: Category[] }) => {
-    const { categoryFilters, setCategoryFilters } = useFilter()
+    const { categoryFilters, sort, setCategoryFilters, setSort } = useFilter()
 
     const handleCategories = (categoryId: string) => {
         if (categoryFilters.includes(categoryId)) {
@@ -20,6 +21,8 @@ const Filters = ({ categories }: { categories: Category[] }) => {
             setCategoryFilters([...categoryFilters, categoryId])
         }
     }
+
+    const handleSort = (value: string) => setSort(value)
 
     return (
         <div className={classes.filters}>
@@ -39,6 +42,24 @@ const Filters = ({ categories }: { categories: Category[] }) => {
                             />
                         )
                     })}
+                </div>
+                <HR className={classes.hr} />
+                <h6 className={classes.title}>Sort By</h6>
+                <div className={classes.categories}>
+                    <RadioButton
+                        label="Latest"
+                        value="-createdAt"
+                        isSelected={sort === '-createdAt'}
+                        onRadioChange={handleSort}
+                        groupName="sort"
+                    />
+                    <RadioButton
+                        label="Oldest"
+                        value="createdAt"
+                        isSelected={sort === 'createdAt'}
+                        onRadioChange={handleSort}
+                        groupName="sort"
+                    />
                 </div>
             </div>
         </div>
