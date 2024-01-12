@@ -1,17 +1,14 @@
 /** @type {import('next').NextConfig} */
-const ContentSecurityPolicy = require('./csp');
-const redirects = require('./redirects');
+const ContentSecurityPolicy = require("./csp");
+const redirects = require("./redirects");
 
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['localhost', process.env.NEXT_PUBLIC_SERVER_URL]
+    domains: ["localhost", process.env.NEXT_PUBLIC_SERVER_URL]
       .filter(Boolean)
-      .map(url => url.replace(/https?:\/\//, '')),
+      .map((url) => url.replace(/https?:\/\//, "")),
   },
   redirects,
   async headers() {
@@ -25,11 +22,11 @@ const nextConfig = {
       headers.push({
         headers: [
           {
-            key: 'X-Robots-Tag',
-            value: 'noindex',
+            key: "X-Robots-Tag",
+            value: "noindex",
           },
         ],
-        source: '/:path*',
+        source: "/:path*",
       });
     }
 
@@ -37,10 +34,10 @@ const nextConfig = {
     // It works by explicitly whitelisting trusted sources of content for your website
     // This will block all inline scripts and styles except for those that are allowed
     headers.push({
-      source: '/(.*)',
+      source: "/(.*)",
       headers: [
         {
-          key: 'Content-Security-Policy',
+          key: "Content-Security-Policy",
           value: ContentSecurityPolicy,
         },
       ],

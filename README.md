@@ -1,3 +1,217 @@
+`<a name="readme-top"></a>`
+
+# Tech Haven - An Open-source E Commerce Store
+
+![Tech Haven - An Open-source E Commerce Store](/.github/images/img_main.png "Tech Haven - An Open-source E Commerce Store")
+
+<!-- Table of Contents -->
+<details>
+
+<summary>
+
+# :notebook_with_decorative_cover: Table of Contents
+
+</summary>
+
+- [Folder Structure](#bangbang-folder-structure)
+- [Getting Started](#toolbox-getting-started)
+- [Screenshots](#camera-screenshots)
+- [Tech Stack](#gear-tech-stack)
+- [Stats](#wrench-stats)
+- [Contribute](#raised_hands-contribute)
+- [Acknowledgements](#gem-acknowledgements)
+- [Learn More](#books-learn-more)
+- [Deploy on Vercel](#page_with_curl-deploy-on-vercel)
+- [Give A Star](#star-give-a-star)
+
+</details>
+
+## ‼️ Folder Structure
+
+Here is the folder structure of this app.
+
+```bash
+e-commerce/
+  |- public/
+    |-- admin-ui/
+    |-- assets/
+      |--- icons/
+      |--- images/
+  |- src/
+    |-- app/
+      |--- _api/
+      |--- _blocks/
+      |--- _components/
+      |--- _css/
+      |--- _graphql/
+      |--- _heros/
+      |--- _providers/
+      |--- _utilities/
+      |--- (pages)/
+      |--- api/
+      |--- constants/
+      |--- cssVariables.js
+      |--- layout.tsx
+      |--- page.tsx
+    |-- payload/
+      |--- access/
+      |--- blocks/
+      |--- collections/
+      |--- components/
+      |--- endpoints/
+      |--- fields/
+      |--- globals/
+      |--- hooks/
+      |--- seed/
+      |--- stripe/
+      |--- utilities/
+      |--- dotenv.js
+      |--- emptyModuleMock.js
+      |--- payload-types.ts
+      |--- payload-config.ts
+    |-- server.default.ts
+    |-- server.ts
+  |- .env
+  |- .env.example
+  |- .eslintrc.json
+  |- .gitignore
+  |- .prettierignore
+  |- csp.js
+  |- eject.ts
+  |- next.config.js
+  |- nodemon.json
+  |- package.json
+  |- redirects.js
+  |- tsconfig.json
+  |- tsconfig.server.json
+```
+
+<br />
+
+## :toolbox: Getting Started
+
+1. Make sure **Git** and **NodeJS** is installed.
+2. Clone this repository to your local computer.
+3. Create `.env` file in root directory.
+4. Contents of `.env`:
+
+```bash
+# .env
+
+
+# Run on a specific port
+PORT=3000
+
+# Database connection string
+DATABASE_URI=mongodb://127.0.0.1/payload-template-ecommerce
+
+# Used to encrypt JWT tokens
+PAYLOAD_SECRET=YOUR_SECRET_HERE
+
+# Used to format links and URLs
+PAYLOAD_PUBLIC_SERVER_URL=http://localhost:3000
+NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+
+# Enable Stripe integration
+STRIPE_SECRET_KEY=
+PAYLOAD_PUBLIC_STRIPE_IS_TEST_KEY=true
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+
+# Enable Stripe webhooks (optional)
+STRIPE_WEBHOOKS_SIGNING_SECRET=
+
+# Allow robots to index the site (optional)
+NEXT_PUBLIC_IS_LIVE=
+
+# Used to preview drafts
+PAYLOAD_PUBLIC_DRAFT_SECRET=demo-draft-secret
+NEXT_PRIVATE_DRAFT_SECRET=demo-draft-secret
+
+# Used to revalidate static pages
+REVALIDATION_KEY=demo-revalation-key
+NEXT_PRIVATE_REVALIDATION_KEY=demo-revalation-key
+
+```
+
+5. **Payload Secret**:
+
+   - `PAYLOAD_SECRET`, `PAYLOAD_PUBLIC_DRAFT_SECRET`, `NEXT_PRIVATE_DRAFT_SECRET`, `REVALIDATION_KEY` and `NEXT_PRIVATE_REVALIDATION_KEY` are random strings. You can assign them randomly to any sequence of strings or maybe use any online password generator to do so.
+6. **Stripe Secret Key**:
+
+   - `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` is provided by Stripe in order to setup online payments. You need to sign up for an account on Stripe (https://stripe.com/), log in, and access these keys in your account dashboard.
+
+![Copy Stripe Secret Key](/.github/images/step_stripe.png "Copy Stripe Secret Key")
+
+7. **URLs for Clerk**:
+
+   - `NEXT_PUBLIC_CLERK_SIGN_IN_URL`, `NEXT_PUBLIC_CLERK_SIGN_UP_URL`, `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL`, and `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL` are endpoints or URLs related to your Clerk setup. You can configure these in your Clerk dashboard.
+8. **MongoDB Database URL**:
+
+   - `DATABASE_URI` is the connection URL for your MongoDB Databse. You can obtain the connection URL from your Payload CMS dashboard.
+
+![Copy MongoDB Database Auth URL](/.github/images/step_mongodb.png "Copy MongoDB Database Auth URL")
+
+9. **Public App URL**:
+
+   - `PAYLOAD_PUBLIC_SERVER_URL` and `NEXT_PUBLIC_SERVER_URL` are endpoints or URLs related to this Project. You can configure/copy this as per your needs.
+10. Open terminal in root directory. Run npm install or yarn install.
+11. Now app is fully configured 👍 and you can start using this app using npm run dev or yarn dev.
+
+### 📚 Additional Resources
+
+- Payload Documentation: https://payloadcms.com/docs/
+- Stripe Documentation: https://stripe.com/docs/
+- MongoDB Documentation: https://www.mongodb.com/docs/
+- Express API Documentation: https://expressjs.com/en/5x/api.html
+
+**NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
+
+## 📷 Screenshots:
+
+![Modern UI/UX](/.github/images/img1.png "Modern UI/UX")
+
+![Products Page](/.github/images/img2.png "Products Page")
+
+![View Product Details](/.github/images/img3.png "View Product Details")
+
+![Add to Cart Functionality](/.github/images/img4.png "Add to Cart Functionality")
+
+## ⚙️ Tech Stack
+
+[![React JS](https://skillicons.dev/icons?i=react "React JS")](https://react.dev/ "React JS") [![Next JS](https://skillicons.dev/icons?i=next "Next JS")](https://nextjs.org/ "Next JS") [![Typescript](https://skillicons.dev/icons?i=ts "Typescript")](https://www.typescriptlang.org/ "Typescript") [![Vercel](https://skillicons.dev/icons?i=vercel "Vercel")](https://vercel.app/ "Vercel") [![MongoDB](https://skillicons.dev/icons?i=mongodb "MongoDB")](https://tailwindcss.com/ "MongoDB") [![GraphQL](https://skillicons.dev/icons?i=graphql "GraphQL")](https://graphql.org/ "GraphQL")
+
+## 🔧 Stats
+
+[![Stats for Tech Haven](/.github/images/stats.svg "Stats for Tech Haven")](https://pagespeed-insights-svg.glitch.me/?url=https://app-ecommerce.payloadcms.app/ "Stats for Tech Haven")
+
+## 🙌 Contribute
+
+You might encounter some bugs while using this app. You are more than welcome to contribute. Just submit changes via pull request and I will review them before merging. Make sure you follow community guidelines.
+
+## 💎 Acknowledgements
+
+Useful resources and libraries that are used in My Portfolio
+
+- [Payload CMS](https://payloadcms.com "Payload CMS")
+- [Bundler Webpack](https://payloadcms.com/docs/admin/webpack "ShadCN UI")
+- [MongoDB](https://payloadcms.com/docs/database/mongodb "MongoDB")
+- [Dotenv](https://github.com/motdotla/dotenv#readme "Dotenv")
+- [Express](https://expressjs.com/ "Express")
+- [Stripe](https://stripe.com/ "Stripe")
+- [QueryString](https://github.com/ljharb/qs#readme "QueryString")
+- [React Router Dom](https://reactrouter.com/ "React Router Dom")
+- [Prettier](https://prettier.io/ "Prettier")
+- [ESLint](https://eslint.org/ "ESLint")
+
+## 📚 Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
 # Payload E-Commerce Template
 
 This is the official [Payload E-Commerce Template](https://github.com/payloadcms/payload/blob/main/templates/ecommerce). Use it to power e-commerce businesses and online stores of all sizes. This repo includes a fully-working backend, enterprise-grade admin panel, and a beautifully designed, production-ready website.
@@ -30,26 +244,26 @@ If you have not done so already, you need to have standalone copy of this repo o
 
 #### Method 1 (recommended)
 
-  Go to Payload Cloud and [clone this template](https://payloadcms.com/new/clone/ecommerce). This will create a new repository on your GitHub account with this template's code which you can then clone to your own machine.
+Go to Payload Cloud and [clone this template](https://payloadcms.com/new/clone/ecommerce). This will create a new repository on your GitHub account with this template's code which you can then clone to your own machine.
 
 #### Method 2
 
-  Use the `create-payload-app` CLI to clone this template directly to your machine:
+Use the `create-payload-app` CLI to clone this template directly to your machine:
 
     npx create-payload-app@latest my-project -t ecommerce
 
 #### Method 3
 
-  Use the `git` CLI to clone this template directly to your machine:
+Use the `git` CLI to clone this template directly to your machine:
 
     git clone -n --depth=1 --filter=tree:0 https://github.com/payloadcms/payload my-project && cd my-project && git sparse-checkout set --no-cone templates/ecommerce && git checkout && rm -rf .git && git init && git add . && git mv -f templates/ecommerce/{.,}* . && git add . && git commit -m "Initial commit"
 
 ### Development
 
 1. First [clone the repo](#clone) if you have not done so already
-1. `cd my-project && cp .env.example .env` to copy the example environment variables
-1. `yarn && yarn dev` to install dependencies and start the dev server
-1. `open http://localhost:3000` to open the app in your browser
+2. `cd my-project && cp .env.example .env` to copy the example environment variables
+3. `yarn && yarn dev` to install dependencies and start the dev server
+4. `open http://localhost:3000` to open the app in your browser
 
 That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. To begin accepting payment, follow the [Stripe](#stripe) guide. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
 
@@ -59,14 +273,13 @@ The Payload config is tailored specifically to the needs of most e-commerce busi
 
 ### Collections
 
-See the [Collections](https://payloadcms.com/docs/configuration/collections)  docs for details on how to extend this functionality.
+See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
 
 - #### Users (Authentication)
 
   Users are auth-enabled and encompass both admins and customers based on the value of their `roles` field. Only `admin` users can access your admin panel to manage your store whereas `customer` can authenticate on your front-end to create [shopping carts](#shopping-cart) and place [orders](#orders) but have limited access to the platform. See [Access Control](#access-control) for more details.
 
   For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
-
 - #### Products
 
   Products are linked to Stripe via a custom select field that is dynamically populated in the sidebar of each product. This field fetches all available products in the background and displays them as options. Once a product has been selected, prices get automatically synced between Stripe and Payload through [Payload Hooks](https://payloadcms.com/docs/hooks) and [Stripe Webhooks](https://stripe.com/docs/webhooks). See [Stripe](#stripe) for more details.
@@ -74,19 +287,15 @@ See the [Collections](https://payloadcms.com/docs/configuration/collections)  do
   All products are layout builder enabled so you can generate unique pages for each product using layout building blocks, see [Layout Builder](#layout-builder) for more details.
 
   Products can also restrict access to content or digital assets behind a paywall (gated content), see [Paywall](#paywall) for more details.
-
 - #### Orders
 
   Orders are created when a user successfully completes a checkout. They contain all the data about the order including the products purchased, the total price, and the user who placed the order. See [Checkout](#checkout) for more details.
-
 - #### Pages
 
   All pages are layout builder enabled so you can generate unique layouts for each page using layout-building blocks, see [Layout Builder](#layout-builder) for more details.
-
 - #### Media
 
   This is the uploads enabled collection used by products and pages to contain media like images, videos, downloads, and other assets.
-
 - #### Categories
 
   A taxonomy used to group products together. Categories can be nested inside of one another, for example "Courses > Technology". See the official [Payload Nested Docs Plugin](https://github.com/payloadcms/plugin-nested-docs) for more details.
@@ -98,7 +307,6 @@ See the [Globals](https://payloadcms.com/docs/configuration/globals) docs for de
 - `Header`
 
   The data required by the header on your front-end like nav links.
-
 - `Footer`
 
   Same as above but for the footer of your site.
@@ -145,11 +353,12 @@ Logged-in users can have their shopping carts saved to their profiles as they sh
 Payload itself handles no currency exchange. All payments are processed and billed using [Stripe](https://stripe.com). This means you must have access to a Stripe account via an API key, see [Connect Stripe](#connect-stripe) for how to get one. When you create a product in Payload that you wish to sell, it must be connected to a Stripe product by selecting one from the field in the product's sidebar, see [Products](#products) for more details. Once set, data is automatically synced between the two platforms in the following ways:
 
 1. Stripe to Payload using [Stripe Webhooks](https://stripe.com/docs/webhooks):
+
    - `product.created`
    - `product.updated`
    - `price.updated`
+2. Payload to Stripe using [Payload Hooks](https://payloadcms.com/docs/hooks/overview):
 
-1. Payload to Stripe using [Payload Hooks](https://payloadcms.com/docs/hooks/overview):
    - `user.create`
 
 For more details on how to extend this functionality, see the the official [Payload Stripe Plugin](https://github.com/payloadcms/plugin-stripe).
@@ -159,21 +368,21 @@ For more details on how to extend this functionality, see the the official [Payl
 To integrate with Stripe, follow these steps:
 
 1. You will first need to create a [Stripe](https://stripe.com) account if you do not already have one.
-1. Retrieve your [Stripe API keys](https://dashboard.stripe.com/test/apikeys) and paste them into your `env`:
+2. Retrieve your [Stripe API keys](https://dashboard.stripe.com/test/apikeys) and paste them into your `env`:
    ```bash
    STRIPE_SECRET_KEY=
    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
    ```
-1. In another terminal, listen for webhooks (optional):
+3. In another terminal, listen for webhooks (optional):
    ```bash
    stripe login # follow the prompts
    yarn stripe:webhooks
    ```
-1. Paste the given webhook signing secret into your `env`:
+4. Paste the given webhook signing secret into your `env`:
    ```bash
    STRIPE_WEBHOOKS_SIGNING_SECRET=
    ```
-1. Reboot Payload to ensure that Stripe connects and the webhooks are registered.
+5. Reboot Payload to ensure that Stripe connects and the webhooks are registered.
 
 ## Checkout
 
@@ -279,7 +488,7 @@ If you prefer another front-end framework or would like to use Payload as a stan
 
 For more details on how setup a custom server, see the official [Custom Server Example](https://github.com/payloadcms/payload/tree/main/examples/custom-server).
 
-##  Development
+## Development
 
 To spin up this example locally, follow the [Quick Start](#quick-start). Then [Connect Stripe](#connect-stripe) to enable payments, and [Seed](#seed) the database with a few products and pages.
 
@@ -288,8 +497,8 @@ To spin up this example locally, follow the [Quick Start](#quick-start). Then [C
 Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
 
 1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+2. Next run `docker-compose up`
+3. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
 
 That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
 
@@ -304,18 +513,25 @@ To seed the database with a few products and pages you can run `yarn seed`. This
 To run Payload in production, you need to build and serve the Admin panel. To do so, follow these steps:
 
 1. Invoke the `payload build` script by running `yarn build` or `npm run build` in your project root. This creates a `./build` directory with a production-ready admin bundle.
-1. Finally run `yarn serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
-1. When you're ready to go live, see [Deployment](#deployment) for more details.
+2. Finally run `yarn serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
+3. When you're ready to go live, see [Deployment](#deployment) for more details.
 
 ### Deployment
 
 Before deploying your app, you need to:
 
 1. Switch [your Stripe account to live mode](https://stripe.com/docs/test-mode) and update your [Stripe API keys](https://dashboard.stripe.com/test/apikeys). See [Connect Stripe](#connect-stripe) for more details.
-1. Ensure your app builds and serves in production. See [Production](#production) for more details.
+2. Ensure your app builds and serves in production. See [Production](#production) for more details.
 
 The easiest way to deploy your project is to use [Payload Cloud](https://payloadcms.com/new/import), a one-click hosting solution to deploy production-ready instances of your Payload apps directly from your GitHub repo. You can also deploy your app manually, check out the [deployment documentation](https://payloadcms.com/docs/production/deployment) for full details.
 
 ## Questions
 
 If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+
+## ⭐️ Give A Star
+
+You can also give this repository a star to show more people and they can use this repository.
+
+<br />
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
