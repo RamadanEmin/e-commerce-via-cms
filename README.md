@@ -1,8 +1,9 @@
-`<a name="readme-top"></a>`
-
 # Tech Haven - An Open-source E Commerce Store
 
-![Tech Haven - An Open-source E Commerce Store](/.github/images/img_main.png "Tech Haven - An Open-source E Commerce Store")
+You can view the site here
+[Click Me](https://e-commerce-payload-73cf848.payloadcms.app/home)
+
+![Tech Haven - An Open-source E Commerce Store](public/images/img_main.png "Tech Haven - An Open-source E Commerce Store")
 
 <!-- Table of Contents -->
 <details>
@@ -140,7 +141,7 @@ NEXT_PRIVATE_REVALIDATION_KEY=demo-revalation-key
 
    - `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` is provided by Stripe in order to setup online payments. You need to sign up for an account on Stripe (https://stripe.com/), log in, and access these keys in your account dashboard.
 
-![Copy Stripe Secret Key](/.github/images/step_stripe.png "Copy Stripe Secret Key")
+![Copy Stripe Secret Key](public/images/step_stripe.png "Copy Stripe Secret Key")
 
 7. **URLs for Clerk**:
 
@@ -149,7 +150,7 @@ NEXT_PRIVATE_REVALIDATION_KEY=demo-revalation-key
 
    - `DATABASE_URI` is the connection URL for your MongoDB Databse. You can obtain the connection URL from your Payload CMS dashboard.
 
-![Copy MongoDB Database Auth URL](/.github/images/step_mongodb.png "Copy MongoDB Database Auth URL")
+![Copy MongoDB Database Auth URL](public/images/step_mongodb.png "Copy MongoDB Database Auth URL")
 
 9. **Public App URL**:
 
@@ -168,13 +169,13 @@ NEXT_PRIVATE_REVALIDATION_KEY=demo-revalation-key
 
 ## 📷 Screenshots:
 
-![Modern UI/UX](/.github/images/img1.png "Modern UI/UX")
+![Modern UI/UX](public/images/img1.png "Modern UI/UX")
 
-![Products Page](/.github/images/img2.png "Products Page")
+![Products Page](public/images/img2.png "Products Page")
 
-![View Product Details](/.github/images/img3.png "View Product Details")
+![View Product Details](public/images/img3.png "View Product Details")
 
-![Add to Cart Functionality](/.github/images/img4.png "Add to Cart Functionality")
+![Add to Cart Functionality](public/images/img4.png "Add to Cart Functionality")
 
 ## ⚙️ Tech Stack
 
@@ -182,7 +183,7 @@ NEXT_PRIVATE_REVALIDATION_KEY=demo-revalation-key
 
 ## 🔧 Stats
 
-[![Stats for Tech Haven](/.github/images/stats.svg "Stats for Tech Haven")](https://pagespeed-insights-svg.glitch.me/?url=https://app-ecommerce.payloadcms.app/ "Stats for Tech Haven")
+[![Stats for Tech Haven](public/images/stats.svg "Stats for Tech Haven")](https://pagespeed-insights-svg.glitch.me/?url=https://app-ecommerce.payloadcms.app/ "Stats for Tech Haven")
 
 ## 🙌 Contribute
 
