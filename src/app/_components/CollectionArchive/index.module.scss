@@ -1,11 +1,10 @@
-@import '../../_css/common';
+@import "../../_css/common";
 
 // this is to make up for the space taken by the fixed header, since the scroll method does not accept an offset parameter
 .scrollRef {
   position: absolute;
   left: 0;
   top: calc(var(--base) * -5);
-
   @include mid-break {
     top: calc(var(--base) * -2);
   }

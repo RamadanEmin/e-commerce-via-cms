@@ -1,40 +1,40 @@
-'use client'
+"use client";
 
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
-import { Header as HeaderType } from '../../../../payload/payload-types'
-import { useAuth } from '../../../_providers/Auth'
-import { CartLink } from '../../CartLink'
-import { CMSLink } from '../../Link'
+import { Header as HeaderType } from "../../../../payload/payload-types";
+import { useAuth } from "../../../_providers/Auth";
+import { Button } from "../../Button";
+import { CartLink } from "../../CartLink";
+import { CMSLink } from "../../Link";
 
-import classes from './index.module.scss'
-import { Button } from '../../Button'
+import classes from "./index.module.scss";
 
 export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
-  const navItems = header?.navItems || []
-  const { user } = useAuth()
+  const navItems = header?.navItems || [];
+  const { user } = useAuth();
 
   return (
     <nav
-      className={[
-        classes.nav,
-        user === undefined && classes.hide]
+      className={[classes.nav, user === undefined && classes.hide]
         .filter(Boolean)
-        .join(' ')}
+        .join(" ")}
     >
       {navItems.map(({ link }, i) => {
-        return <CMSLink key={i} {...link} appearance="none" />
+        return <CMSLink key={i} {...link} appearance="none" />;
       })}
+      {user && <CartLink />}
       {user && <Link href="/account">Account</Link>}
-      {!user && <Button
-        el='link'
-        href='/login'
-        label='Login'
-        appearance='primary'
-        onClick={() => window.location.href = '/login'}
-      />}
-      {user && <CartLink/>}
+      {!user && (
+        <Button
+          el="link"
+          href="/login"
+          label="Login"
+          appearance="primary"
+          onClick={() => (window.location.href = "/login")}
+        />
+      )}
     </nav>
-  )
-}
+  );
+};

@@ -1,42 +1,50 @@
-'use client'
+"use client";
 
-import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
-import qs from 'qs'
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import qs from "qs";
 
-import { Category, Product } from '../../../payload/payload-types'
-import type { ArchiveBlockProps } from '../../_blocks/ArchiveBlock/types'
-import { useFilter } from '../../_providers/Filter'
-import { Card } from '../Card'
-import { PageRange } from '../PageRange'
-import { Pagination } from '../Pagination'
+import { Product } from "../../../payload/payload-types";
+import type { ArchiveBlockProps } from "../../_blocks/ArchiveBlock/types";
+import { useFilter } from "../../_providers/Filter";
+import { Card } from "../Card";
+import { Gutter } from "../Gutter";
+import { PageRange } from "../PageRange";
+import { Pagination } from "../Pagination";
 
-import classes from './index.module.scss'
+import classes from "./index.module.scss";
 
 type Result = {
-  totalDocs: number
-  docs: Product[]
-  page: number
-  totalPages: number
-  hasPrevPage: boolean
-  hasNextPage: boolean
-  nextPage: number
-  prevPage: number
-}
+  totalDocs: number;
+  docs: Product[];
+  page: number;
+  totalPages: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  nextPage: number;
+  prevPage: number;
+};
 
 export type Props = {
-  className?: string
-  relationTo?: 'products'
-  populateBy?: 'collection' | 'selection'
-  showPageRange?: boolean
-  onResultChange?: (result: Result) => void // eslint-disable-line no-unused-vars
-  limit?: number
-  populatedDocs?: ArchiveBlockProps['populatedDocs']
-  populatedDocsTotal?: ArchiveBlockProps['populatedDocsTotal']
-  categories?: ArchiveBlockProps['categories']
-}
+  className?: string;
+  relationTo?: "products";
+  populateBy?: "collection" | "selection";
+  showPageRange?: boolean;
+  onResultChange?: (result: Result) => void; // eslint-disable-line no-unused-vars
+  sort?: string;
+  limit?: number;
+  populatedDocs?: ArchiveBlockProps["populatedDocs"];
+  populatedDocsTotal?: ArchiveBlockProps["populatedDocsTotal"];
+  categories?: ArchiveBlockProps["categories"];
+};
 
-export const CollectionArchive: React.FC<Props> = props => {
-  const { categoryFilters, sort } = useFilter()
+export const CollectionArchive: React.FC<Props> = (props) => {
+  const { categoryFilters, sort } = useFilter();
 
   const {
     className,
@@ -46,39 +54,39 @@ export const CollectionArchive: React.FC<Props> = props => {
     limit = 10,
     populatedDocs,
     populatedDocsTotal,
-  } = props
+  } = props;
 
   const [results, setResults] = useState<Result>({
-    totalDocs: typeof populatedDocsTotal === 'number' ? populatedDocsTotal : 0,
-    docs: (populatedDocs?.map(doc => doc.value) || []) as [],
+    totalDocs: typeof populatedDocsTotal === "number" ? populatedDocsTotal : 0,
+    docs: populatedDocs?.map((doc) => doc.value) || [],
     page: 1,
     totalPages: 1,
     hasPrevPage: false,
     hasNextPage: false,
     prevPage: 1,
     nextPage: 1,
-  })
+  });
 
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | undefined>(undefined)
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const hasHydrated = useRef(false)
-  const [page, setPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | undefined>(undefined);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const hasHydrated = useRef(false);
+  const [page, setPage] = useState(1);
 
   const scrollToRef = useCallback(() => {
-    const { current } = scrollRef
+    const { current } = scrollRef;
     if (current) {
       // current.scrollIntoView({
       //   behavior: 'smooth',
       // })
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    if (!isLoading && typeof results.page !== 'undefined') {
+    if (!isLoading && typeof results.page !== "undefined") {
       // scrollToRef()
     }
-  }, [isLoading, scrollToRef, results])
+  }, [isLoading, scrollToRef, results]);
 
   useEffect(() => {
     // hydrate the block with fresh content after first render
@@ -86,9 +94,9 @@ export const CollectionArchive: React.FC<Props> = props => {
     // and don't show it during initial hydration
     const timer: NodeJS.Timeout = setTimeout(() => {
       if (hasHydrated) {
-        setIsLoading(true)
+        setIsLoading(true);
       }
-    }, 500)
+    }, 500);
 
     const searchQuery = qs.stringify(
       {
@@ -96,56 +104,60 @@ export const CollectionArchive: React.FC<Props> = props => {
         where: {
           ...(categoryFilters && categoryFilters?.length > 0
             ? {
-              categories: {
-                in:
-                  typeof categoryFilters === 'string'
-                    ? [categoryFilters]
-                    : categoryFilters.map((cat: string) => cat).join(','),
-              },
-            }
+                categories: {
+                  in:
+                    typeof categoryFilters === "string"
+                      ? [categoryFilters]
+                      : categoryFilters.map((cat: string) => cat).join(","),
+                },
+              }
             : {}),
         },
         limit,
         page,
         depth: 1,
       },
-      { encode: false },
-    )
+      { encode: false }
+    );
 
     const makeRequest = async () => {
       try {
         const req = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${relationTo}?${searchQuery}`,
-        )
-        const json = await req.json()
-        clearTimeout(timer)
-        hasHydrated.current = true
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/${relationTo}?${searchQuery}`
+        );
+        const json = await req.json();
+        clearTimeout(timer);
+        hasHydrated.current = true;
 
-        const { docs } = json as { docs: Product[] }
+        const { docs } = json as { docs: Product[] };
 
         if (docs && Array.isArray(docs)) {
-          setResults(json)
-          setIsLoading(false)
-          if (typeof onResultChange === 'function') {
-            onResultChange(json)
+          setResults(json);
+          setIsLoading(false);
+          if (typeof onResultChange === "function") {
+            onResultChange(json);
           }
         }
       } catch (err) {
-        console.warn(err) // eslint-disable-line no-console
-        setIsLoading(false)
-        setError(`Unable to load "${relationTo} archive" data at this time.`)
+        console.warn(err); // eslint-disable-line no-console
+        setIsLoading(false);
+        setError(`Unable to load "${relationTo} archive" data at this time.`);
       }
-    }
+    };
 
-    makeRequest()
+    makeRequest();
 
     return () => {
-      if (timer) clearTimeout(timer)
-    }
-  }, [page, categoryFilters, relationTo, onResultChange, sort, limit])
+      if (timer) clearTimeout(timer);
+    };
+  }, [page, categoryFilters, relationTo, onResultChange, sort, limit]);
 
   return (
-    <div className={[classes.collectionArchive, className].filter(Boolean).join(' ')}>
+    <div
+      className={[classes.collectionArchive, className]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <div ref={scrollRef} className={classes.scrollRef} />
       {!isLoading && error && <div>{error}</div>}
       <Fragment>
@@ -159,10 +171,16 @@ export const CollectionArchive: React.FC<Props> = props => {
             />
           </div>
         )}
-
         <div className={classes.grid}>
           {results.docs?.map((result, index) => {
-            return <Card key={index} relationTo="products" doc={result} showCategories />
+            return (
+              <Card
+                key={index}
+                relationTo="products"
+                doc={result}
+                showCategories
+              />
+            );
           })}
         </div>
 
@@ -176,5 +194,5 @@ export const CollectionArchive: React.FC<Props> = props => {
         )}
       </Fragment>
     </div>
-  )
-}
+  );
+};

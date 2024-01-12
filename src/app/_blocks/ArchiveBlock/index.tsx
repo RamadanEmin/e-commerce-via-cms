@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react";
 
-import { CollectionArchive } from '../../_components/CollectionArchive'
-import { Gutter } from '../../_components/Gutter'
-import RichText from '../../_components/RichText'
-import { ArchiveBlockProps } from './types'
+import { CollectionArchive } from "../../_components/CollectionArchive";
+import { Gutter } from "../../_components/Gutter";
+import RichText from "../../_components/RichText";
+import { ArchiveBlockProps } from "./types";
 
-import classes from './index.module.scss'
+import classes from "./index.module.scss";
 
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
-    id?: string
+    id?: string;
   }
-> = props => {
+> = (props) => {
   const {
     introContent,
     id,
@@ -20,9 +20,8 @@ export const ArchiveBlock: React.FC<
     limit,
     populatedDocs,
     populatedDocsTotal,
-    selectedDocs,
     categories,
-  } = props
+  } = props;
 
   return (
     <div id={`block-${id}`} className={classes.archiveBlock}>
@@ -36,11 +35,10 @@ export const ArchiveBlock: React.FC<
         relationTo={relationTo}
         populatedDocs={populatedDocs}
         populatedDocsTotal={populatedDocsTotal}
-        selectedDocs={selectedDocs}
         categories={categories}
         limit={limit}
         sort="-publishedOn"
       />
     </div>
-  )
-}
+  );
+};

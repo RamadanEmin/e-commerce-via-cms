@@ -1,23 +1,27 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 
-import { Category, Product } from '../../../payload/payload-types'
-import { AddToCartButton } from '../../_components/AddToCartButton'
-import { Gutter } from '../../_components/Gutter'
-import { Media } from '../../_components/Media'
-import { Price } from '../../_components/Price'
+import { Category, Product } from "../../../payload/payload-types";
+import { AddToCartButton } from "../../_components/AddToCartButton";
+import { Gutter } from "../../_components/Gutter";
+import { Media } from "../../_components/Media";
+import { Price } from "../../_components/Price";
 
-import classes from './index.module.scss'
+import classes from "./index.module.scss";
 
 export const ProductHero: React.FC<{
-  product: Product
+  product: Product;
 }> = ({ product }) => {
-  const { title, categories, meta: { image: metaImage, description } = {} } = product
+  const {
+    title,
+    categories,
+    meta: { image: metaImage, description } = {},
+  } = product;
 
   return (
     <Gutter className={classes.productHero}>
       <div className={classes.mediaWrapper}>
         {!metaImage && <div className={classes.placeholder}>No image</div>}
-        {metaImage && typeof metaImage !== 'string' && (
+        {metaImage && typeof metaImage !== "string" && (
           <Media imgClassName={classes.image} resource={metaImage} fill />
         )}
       </div>
@@ -28,17 +32,17 @@ export const ProductHero: React.FC<{
         <div className={classes.categoryWrapper}>
           <div className={classes.categories}>
             {categories?.map((category, index) => {
-              const { title: categoryTitle } = category as Category
+              const { title: categoryTitle } = category as Category;
 
-              const titleToUse = categoryTitle || 'Generic'
-              const isLast = index === categories.length - 1
+              const titleToUse = categoryTitle || "Generic";
+              const isLast = index === categories.length - 1;
 
               return (
                 <p key={index} className={classes.category}>
                   {titleToUse} {!isLast && <Fragment>, &nbsp;</Fragment>}
                   <span className={classes.separator}>|</span>
                 </p>
-              )
+              );
             })}
           </div>
           <p className={classes.stock}> In stock</p>
@@ -51,8 +55,11 @@ export const ProductHero: React.FC<{
           <p>{description}</p>
         </div>
 
-        <AddToCartButton product={product} className={classes.addToCartButton} />
+        <AddToCartButton
+          product={product}
+          className={classes.addToCartButton}
+        />
       </div>
     </Gutter>
-  )
-}
+  );
+};

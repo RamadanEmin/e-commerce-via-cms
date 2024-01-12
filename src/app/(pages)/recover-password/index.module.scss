@@ -1,4 +1,4 @@
-@import '../../_css/common';
+@import "../../_css/common";
 
 .recoverPassword {
   display: grid;
@@ -11,7 +11,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url('/assets/images/image-3.svg');
+    background-image: url("/assets/images/image-3.svg");
   }
 
   p {
@@ -25,7 +25,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('/assets/images/image-3.svg');
+  background-image: url("/assets/images/image-3.svg");
 
   @include mid-break {
     background: none;
@@ -76,7 +76,6 @@
     padding: 30px;
   }
 }
-
 
 .formTitle {
   display: flex;

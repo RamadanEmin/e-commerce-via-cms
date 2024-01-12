@@ -5,11 +5,11 @@ export const PRODUCT_CATEGORIES = `categories {
     id
     label
   }
-}`
+}`;
 
 export const CATEGORIES = `
   query Categories {
-    Categories(limit: 300){
+    Categories(limit: 300) {
       docs {
         id
         title

@@ -1,4 +1,4 @@
-@import '../../_css/common';
+@import "../../_css/common";
 
 .login {
   display: grid;
@@ -10,7 +10,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url('/assets/images/image-1.svg');
+    background-image: url("/assets/images/image-1.svg");
   }
 
   p {
@@ -32,7 +32,6 @@
       margin-bottom: 8px;
     }
   }
-
 }
 
 .heroImg {
@@ -41,7 +40,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('/assets/images/image-1.svg');
+  background-image: url("/assets/images/image-1.svg");
 
   @include mid-break {
     background: none;

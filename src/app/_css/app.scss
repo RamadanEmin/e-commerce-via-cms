@@ -1,12 +1,12 @@
-@use './queries.scss' as *;
-@use './colors.scss' as *;
-@use './type.scss' as *;
+@use "./queries.scss" as *;
+@use "./colors.scss" as *;
+@use "./type.scss" as *;
 @import "./theme.scss";
 
 :root {
   --base: 24px;
-  --font-body: 'Jost', sans-serif;
-  --font-jost: 'Jost', sans-serif;
+  --font-body: "Jost", sans-serif;
+  --font-jost: "Jost", sans-serif;
 
   --gutter-h: 180px;
   --block-padding: 120px;
@@ -32,8 +32,8 @@ html {
   -webkit-font-smoothing: antialiased;
   opacity: 0;
 
-  &[data-theme=dark],
-  &[data-theme=light] {
+  &[data-theme="dark"],
+  &[data-theme="light"] {
     opacity: initial;
   }
 }
@@ -54,7 +54,7 @@ body {
   flex-flow: column;
 }
 
-.main{
+.main {
   flex: 1 1 auto;
 }
 
@@ -114,12 +114,12 @@ a {
   text-decoration: none;
 
   &:focus {
-    opacity: .8;
+    opacity: 0.8;
     outline: none;
   }
 
   &:active {
-    opacity: .7;
+    opacity: 0.7;
     outline: none;
   }
 }
